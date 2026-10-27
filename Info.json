@@ -1,0 +1,17 @@
+{
+  "ModName": "CrossBaseCrafting",
+  "PackageName": "CrossBaseCrafting",
+  "Thumbnail": "thumbnail.png",
+  "Version": "3.0.0-cpp",
+  "DebugMode": false,
+  "MinRevision": 82182,
+  "Author": "ddva",
+  "Dependencies": ["UE4SSExperimentalPW"],
+  "Tags": ["UE4SS", "Gameplay", "Performance"],
+  "InstallRule": [
+    {
+      "Type": "Lua",
+      "Targets": ["./dlls"]
+    }
+  ]
+}

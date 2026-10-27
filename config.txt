@@ -1,0 +1,19 @@
+# CrossBaseCrafting - configuration (toutes les cles sont optionnelles)
+
+# Logs detailles dans UE4SS.log
+verbose = true
+
+# Reconciliation complete de securite, en secondes (0 = seulement apres le chargement du monde)
+reconcile_interval_s = 120
+post_load_delay_ms = 3000
+
+# Classes partagees entre bases, separees par des virgules (noms sans /Script/Pal.)
+# A verifier dans CXXHeaderDump : le nom exact de la boite a nourriture.
+container_classes = PalMapObjectItemChestModel, PalMapObjectPalFoodBoxModel
+
+# Noms internes (a ne toucher qu'apres une MAJ du jeu qui les renomme)
+camp_class = PalBaseCampModel
+storage_class = PalBaseCampModuleItemStorage
+register_function = OnAvailableConcreteModel_ServerInternal
+# Vide = auto-detection. Sinon, nom exact de la fonction symetrique trouvee dans CXXHeaderDump.
+unregister_function =

@@ -1,0 +1,5 @@
+{
+  "publishedfileid": "3777415700",
+  "changenote": "Performance and stability release. Main fix: registering a cross-base container was spending ~13 ms re-resolving its base storage module by full object path, once per container, which caused a recurring ~0.1 s hitch when entering a base or when bases streamed in and out. That resolution is now reused from the discovery pass, cutting it to ~0.35 ms. Also fixed: cross-base containers were left in your player inventory after you left a base, so base contents could end up in your corpse - the mod now removes them as soon as you step outside. Crafting and building across bases no longer stutter while chunks stream, because reflection metadata is now cached per world instead of being re-resolved on every call and storage reconciliation is debounced. A game-thread fault now disables cross-base sharing instead of crashing the game. Internal cleanup: the coordinator was split into six focused files and dead code removed. No configuration changes required.",
+  "last_published_version": "3.0.0-cpp"
+}

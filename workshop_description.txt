@@ -1,0 +1,110 @@
+[h1]CrossBaseCrafting[/h1]
+
+Share regular chests and food containers between all of your existing bases. Crafting stations can use materials stored in your other bases without manually moving items.
+
+[h2]Features[/h2]
+[list]
+[*] Shares regular storage chests and food containers across bases
+[*] Supports crafting and building resource access
+[*] Works with multiple bases belonging to the same guild
+[*] Automatically discovers and updates storage modules
+[*] Written in fast native code and designed to stay out of your way: it does not get in the way of your frame rate, even while the world is still loading around you
+[*] Safely restores the original game state when the world changes
+[/list]
+
+[h2]Requirements[/h2]
+[list]
+[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2834209225]UE4SS[/url] for Palworld
+[*] A UE4SS installation that supports C++ mods
+[/list]
+
+[h2]Installation[/h2]
+[olist]
+[*] Subscribe to this Workshop item.
+[*] Start Palworld once so UE4SS can install the mod files.
+[*] Open UE4SS Mod Management and enable [b]CrossBaseCrafting[/b].
+[*] Apply the change and restart the game if requested.
+[*] After restarting, confirm that [b]Mods/NativeMods/UE4SS/Mods/CrossBaseCrafting/dlls/main.dll[/b] exists on disk.
+[/olist]
+
+If the [b]CrossBaseCrafting[/b] folder does not appear even though Mod Management shows the mod as enabled, the game never copied the package: unsubscribe, delete the folder if it exists, resubscribe, and start Palworld again. A leftover [i]CrossBaseCrafting : 1[/i] line in [b]mods.txt[/b] is not proof that the files are installed.
+
+For a manual installation, the mod folder must contain [b]dlls/main.dll[/b] and [b]Info.json[/b]. Do not install the C++ source files or build folders.
+
+[h2]How it works[/h2]
+
+Place regular chests and food containers in your bases. Once the storage graph is ready, the mod registers the available containers across bases and exposes the appropriate shared resources when crafting or building.
+
+[h2]Compatibility and safety[/h2]
+[list]
+[*] Designed for single-player and host (listen-server) worlds; dedicated servers are not supported by this build
+[*] The mod only targets storage modules discovered in the current world
+[*] Original container registrations are tracked and restored during world transitions
+[*] Shared containers are removed from your inventory as soon as you leave a base, so base contents never follow you
+[*] If something unexpected goes wrong, cross-base sharing switches itself off instead of letting the game crash
+[*] Palworld updates may require a compatibility update
+[/list]
+
+[h2]Troubleshooting[/h2]
+
+If the mod does not load, verify that UE4SS is running, [b]CrossBaseCrafting[/b] is enabled, and the UE4SS log contains [i]Starting C++ mod 'CrossBaseCrafting'[/i].
+
+If cross-base access does nothing while the mod is loaded, the UE4SS log now states the exact reason the resource union was disabled (for example a network client or a dedicated server).
+
+If a Palworld update ever breaks the mod, you can disable the parts that touch the game without waiting for a new release. Create an empty text file next to [i]Palworld-Win64-Shipping.exe[/i] and restart the game:
+[list]
+[*] [b]crossbase_no_detour.txt[/b] - disables the native build-material counter
+[*] [b]crossbase_no_live_union.txt[/b] - disables player-inventory injection (crafting/build stop working across bases)
+[*] [b]crossbase_no_persistent.txt[/b] - disables the whole cross-base storage union
+[/list]
+Delete the file to restore normal behaviour. Nothing else is required.
+
+[h2]Changelog[/h2]
+
+[b]v3.0.0-cpp[/b]
+[list]
+[*] Fixed the small freeze you could feel every now and then, especially when entering a base or when the ground was still loading around you
+[*] The mod no longer redoes the same heavy work dozens of times a second while the world is loading
+[*] Your bases are checked far less often, so nothing interrupts you while you walk around
+[*] Items from your other bases no longer hang around in your inventory after you leave a base, so the contents of your bases can no longer end up on your corpse
+[*] If something unexpected happens, the mod quietly switches cross-base sharing off instead of letting the game crash
+[*] Cleaned up the code, no change to the way you play
+[/list]
+
+[b]v2.0.3-cpp[/b]
+[list]
+[*] Fixed the install itself: since the C++ rewrite, the mod could be switched on in the menu while its files were never actually copied into your game, which made everything look broken for most people. It now installs correctly on its own
+[*] The log file now tells you why sharing is not available instead of doing nothing at all
+[/list]
+
+[b]v2.0.2-cpp[/b]
+[list]
+[*] You can now build with materials stored in another base
+[*] The build menu shows the right totals straight away, even if you never opened your crafting menu first
+[*] The mod repairs itself when a base is still loading its chests
+[*] Quieter log file during normal play
+[/list]
+
+[b]v2.0.1-cpp[/b]
+[list]
+[*] Fixed building failing when the wood or stone came from another base
+[*] Your materials are re-checked right before you place a building
+[/list]
+
+[b]v2.0.0-cpp[/b]
+[list]
+[*] Rewritten from the ground up as a fast native version, replacing the old scripted one
+[*] Bases now share their storage reliably
+[*] Everything is put back correctly when you load a different world
+[*] Much lighter on your frame rate
+[*] Removed the old install steps that no longer applied
+[/list]
+
+[b]Previous versions[/b]
+[list]
+[*] First release on the Workshop, plus fixes to keep up with Palworld updates
+[/list]
+
+[h2]License[/h2]
+
+Free to download and play with, forever. Only the source code may not be copied or reused. See the LICENSE file included in the mod package for the full terms.

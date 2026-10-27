@@ -1,0 +1,25 @@
+# Build artifacts
+old/
+old-claude/
+dlls/
+build-v204/
+build-v204.bat
+cpp/build/
+**/target/
+**/build/
+**/incremental/
+**/deps/
+Binaries/
+Intermediate/
+.vs/
+*.dll
+*.pdb
+*.exp
+*.lib
+*.ilk
+*.exe
+*.log
+
+# OS
+Thumbs.db
+.DS_Store
